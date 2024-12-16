@@ -2,14 +2,11 @@
     <div>
         <ul>
             <li v-for="card in CardData.cards" :key="card.id">
-                <CardTeste :item="card">
-
+                <Card :item="card">
                     <template v-slot:buttons="{ item }">
                         <button class="btn btn-danger" @click="CardData.addCardToBlacklist(card)">Rejeitar</button>
                     </template>
-                </CardTeste>
-
-
+                </Card>
             </li>
         </ul>
 
@@ -19,7 +16,7 @@
 <script setup>
 import { onMounted } from 'vue';
 import { useCardDataStore } from '../../stores/CardData';
-import CardTeste from '../../components/CardTeste.vue';
+import Card from '../../components/Card.vue';
 
 const CardData = useCardDataStore();
 

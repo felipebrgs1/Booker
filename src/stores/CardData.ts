@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import axios from "axios";
 import type CardModel from "../Model/CardModel";
 
@@ -10,6 +10,7 @@ export const useCardDataStore = defineStore("cardData", () => {
 	const currentCardIndex = ref(0);
 	const lastGenerated = ref(0);
 
+	const currentCard = computed(() => cards.value[currentCardIndex.value]);
 	const shouldRefreshCache = () => {
 		const CACHE_DURATION = 24 * 60 * 60 * 1000;
 		const currentTime = Date.now();
@@ -63,5 +64,6 @@ export const useCardDataStore = defineStore("cardData", () => {
 		favorite,
 		blacklist,
 		logFavoritesAndBlacklist,
+		currentCard,
 	};
 });
