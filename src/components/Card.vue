@@ -1,7 +1,7 @@
 <template>
     <div class="mt-5 d-flex justify-content-center">
         <ul class="list-group w-75">
-            <li v-for="(card, index) in currentCard" :key="card.id" class="list-group-item text-center">
+            <li v-for="(card, index) in CardData.CurrentCard" :key="card.id" class="list-group-item text-center">
                 <div>
                     <h5>{{ card.title }}</h5>
                     <div class="mt-3">
@@ -29,15 +29,10 @@ import { ref, onMounted } from 'vue';
 import { useCardDataStore } from '../stores/CardData';
 import { computed } from 'vue';
 const CardData = useCardDataStore();
-const currentCardIndex = ref(0);
 
 onMounted(() => {
     CardData.generateCards(5);
-    currentCardIndex.value = 0;
 });
 
-const currentCard = computed(() => {
-    return CardData.cards.slice(currentCardIndex.value, currentCardIndex.value + 1);
-});
 
 </script>

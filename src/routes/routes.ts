@@ -11,11 +11,6 @@ const routes = [
 		name: "favorite",
 		component: () => import("../views/Favorites/index.vue"), // Crie um componente About.vue em "views"
 	},
-	{
-		path: "/counter",
-		name: "counter",
-		component: () => import("../views/counter.vue"),
-	},
 ];
 
 const router = createRouter({
