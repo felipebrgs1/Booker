@@ -4,7 +4,7 @@
 2- npm run dev    
 
 
-https://excalidraw.com/#json=5OJWrQKrmX9E8aewV-wuV,q5s_FuVdSwSmEDQjRd6LnQ      
+Proto 1 https://excalidraw.com/#json=5OJWrQKrmX9E8aewV-wuV,q5s_FuVdSwSmEDQjRd6LnQ      
 
 
-https://excalidraw.com/#json=HnDAxanQwNVMVnS0lDiWF,bLQVVXLIpbIJhfbbBzUaZA
+Proto 2 https://excalidraw.com/#json=HnDAxanQwNVMVnS0lDiWF,bLQVVXLIpbIJhfbbBzUaZA
