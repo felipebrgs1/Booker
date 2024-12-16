@@ -1,0 +1,18 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
+.my-custom-button {
+  background-color: $purple-100; // Cor de fundo
+  color: $purple-900; // Cor do texto (contrastante)
+  border: 1px solid $purple-300; // Borda
+
+  // Adicione estilos adicionais, se necessário
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+
+  &:hover {
+    background-color: $purple-200; // Cor mais escura no hover
+  }
+}
+
+@import "node_modules/bootstrap/scss/bootstrap";
