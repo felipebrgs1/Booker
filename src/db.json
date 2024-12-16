@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1,
+        "title": "O Senhor dos Anéis",
+        "genre": "Fantasia",
+        "image": "https://via.placeholder.com/300x400?text=Senhor+dos+Aneis",
+        "description": "Uma épica jornada para destruir o Um Anel.",
+        "author": "J.R.R. Tolkien",
+        "friends": ["Alice", "Bob"],
+        "favorite": ["John", "Mary"],
+        "blacklist": null
+    },
+    {
+        "id": 2,
+        "title": "1984",
+        "genre": "Distopia",
+        "image": "https://via.placeholder.com/300x400?text=1984",
+        "description": "Uma sociedade vigiada e controlada pelo Grande Irmão.",
+        "author": "George Orwell",
+        "friends": ["Charlie", "Diana"],
+        "favorite": ["Eva"],
+        "blacklist": null
+    },
+    {
+        "id": 3,
+        "title": "Dom Quixote",
+        "genre": "Aventura",
+        "image": "https://via.placeholder.com/300x400?text=Dom+Quixote",
+        "description": "As aventuras de um cavaleiro idealista e seu fiel escudeiro.",
+        "author": "Miguel de Cervantes",
+        "friends": ["Frank", "Grace"],
+        "favorite": ["Hannah", "Ian"],
+        "blacklist": ["Jack"]
+    },
+    {
+        "id": 4,
+        "title": "O Pequeno Príncipe",
+        "genre": "Infantil",
+        "image": "https://via.placeholder.com/300x400?text=Pequeno+Principe",
+        "description": "Uma história de amizade, amor e perda.",
+        "author": "Antoine de Saint-Exupéry",
+        "friends": ["Karen"],
+        "favorite": null,
+        "blacklist": ["Liam", "Mona"]
+    },
+    {
+        "id": 5,
+        "title": "Harry Potter e a Pedra Filosofal",
+        "genre": "Fantasia",
+        "image": "https://via.placeholder.com/300x400?text=Harry+Potter",
+        "description": "A introdução ao mundo mágico de Hogwarts.",
+        "author": "J.K. Rowling",
+        "friends": ["Noah", "Olivia"],
+        "favorite": ["Peter"],
+        "blacklist": null
+    },
+    {
+        "id": 6,
+        "title": "O Código Da Vinci",
+        "genre": "Suspense",
+        "image": "https://via.placeholder.com/300x400?text=Codigo+Da+Vinci",
+        "description": "Um mistério envolvendo a arte renascentista e conspirações.",
+        "author": "Dan Brown",
+        "friends": ["Quincy"],
+        "favorite": null,
+        "blacklist": ["Rachel", "Steve"]
+    },
+    {
+        "id": 7,
+        "title": "Orgulho e Preconceito",
+        "genre": "Romance",
+        "image": "https://via.placeholder.com/300x400?text=Orgulho+e+Preconceito",
+        "description": "Um romance clássico sobre diferenças sociais e amor.",
+        "author": "Jane Austen",
+        "friends": ["Tina", "Uma"],
+        "favorite": ["Victor"],
+        "blacklist": null
+    },
+    {
+        "id": 8,
+        "title": "A Revolução dos Bichos",
+        "genre": "Satírico",
+        "image": "https://via.placeholder.com/300x400?text=Revolucao+dos+Bichos",
+        "description": "Uma alegoria da política e poder.",
+        "author": "George Orwell",
+        "friends": ["Will", "Xena"],
+        "favorite": ["Yvonne"],
+        "blacklist": ["Zane"]
+    },
+    {
+        "id": 9,
+        "title": "Moby Dick",
+        "genre": "Aventura",
+        "image": "https://via.placeholder.com/300x400?text=Moby+Dick",
+        "description": "A obsessão de um capitão por capturar uma baleia branca.",
+        "author": "Herman Melville",
+        "friends": ["Alice"],
+        "favorite": null,
+        "blacklist": ["Bob", "Charlie"]
+    },
+    {
+        "id": 10,
+        "title": "O Morro dos Ventos Uivantes",
+        "genre": "Drama",
+        "image": "https://via.placeholder.com/300x400?text=Morro+dos+Ventos+Uivantes",
+        "description": "Uma história de amor e vingança.",
+        "author": "Emily Brontë",
+        "friends": ["Diana", "Frank"],
+        "favorite": ["Grace"],
+        "blacklist": null
+    }
+]
