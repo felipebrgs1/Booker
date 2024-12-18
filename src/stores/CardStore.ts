@@ -32,17 +32,14 @@ export const useCardStore = defineStore("cardData", {
 		},
 		async postFavorite(_cardId: number, personId = 1) {
 			try {
-				// Faz a requisição para adicionar aos favoritos
 				const response = await axios.post(
 					`http://localhost:3000/people/${personId}/favorites/${_cardId}`,
 				);
 
-				// Filtra os cards para remover o que foi adicionado aos favoritos
 				this.cards = this.cards.filter((card) => card.id !== _cardId);
 
 				console.log("Resposta do servidor:", response.data);
 			} catch (error) {
-				// Lida com erros na requisição
 				console.error("Erro ao adicionar aos favoritos:", error);
 			}
 		},

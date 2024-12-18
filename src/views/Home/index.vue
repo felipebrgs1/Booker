@@ -1,7 +1,6 @@
 <template>
-    <div class="container mt-5 rounded shadow bg-white">
+    <div class="container mt-4 rounded shadow bg-white">
         <div class="d-flex flex-column align-items-center">
-            <!-- Exibe apenas o card atual -->
             <Card v-if="currentCard" :item="currentCard">
                 <template v-slot:buttons>
                     <button class="btn btn-danger mx-2" @click="handleAction('blacklist')">
@@ -25,13 +24,10 @@ import Card from '../../components/Card.vue';
 const CardData = useCardStore();
 const { cards } = storeToRefs(CardData);
 
-// Índice do card atualmente exibido
 const currentIndex = ref(0);
 
-// Computed para obter o card atual
 const currentCard = computed(() => cards.value[currentIndex.value]);
 
-// Funções de navegação
 const handleAction = (action: 'blacklist' | 'favorite') => {
     if (action === 'blacklist') {
         CardData.postBlacklist(currentCard.value.id, 1);
@@ -39,13 +35,11 @@ const handleAction = (action: 'blacklist' | 'favorite') => {
         CardData.postFavorite(currentCard.value.id, 1);
     }
 
-    // Avança para o próximo card após a ação
     if (currentIndex.value < cards.value.length - 1) {
         currentIndex.value++;
     }
 };
 
-// Carrega os cards ao montar o componente
 onMounted(() => {
     CardData.getCards().then(() => {
         console.log("Cards carregados:", CardData.cards);

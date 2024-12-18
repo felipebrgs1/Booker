@@ -1,6 +1,6 @@
 0- cd src -> bun i -> bun run dev
 
-1- cd .. -> cd Backend -> npx prisma generate ->bun index.ts
+1- cd .. -> cd Backend -> npx prisma generate ->bun swagger.ts
 
 
 
