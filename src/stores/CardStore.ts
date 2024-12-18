@@ -16,7 +16,7 @@ export const useCardStore = defineStore("cardData", {
 	actions: {
 		async getCards() {
 			const response = await axios.get("http://localhost:3000/people/get/1");
-			this.cards = response.data;
+			this.cards = [response.data[0]];
 		},
 		async getFavorite() {
 			const response = await axios.get(

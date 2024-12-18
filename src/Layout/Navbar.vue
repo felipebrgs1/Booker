@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-white bg-white rounded-bottom shadow-lg sticky-top ">
+    <nav class="navbar navbar-expand-lg navbar-white bg-white rounded-bottom shadow-lg ">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
                 <i class="bi bi-book-fill m-1"></i>
