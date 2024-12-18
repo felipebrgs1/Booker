@@ -21,7 +21,27 @@
         }
       }
     },
-    "/cards/get/{id}": {
+    "/cards/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/people/get/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -44,7 +64,7 @@
         }
       }
     },
-    "/cards/{id}": {
+    "/people/{id}/blacklist": {
       "get": {
         "description": "",
         "parameters": [
@@ -65,6 +85,14 @@
       }
     },
     "/people": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "post": {
         "description": "",
         "responses": {
@@ -89,17 +117,9 @@
             }
           }
         }
-      },
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
       }
     },
-    "/people/{id}": {
+    "/people/{id}/favorites": {
       "get": {
         "description": "",
         "parameters": [
@@ -173,26 +193,6 @@
         }
       }
     },
-    "/people/{id}/favorites": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/people/{id}/blacklist/{cardId}": {
       "post": {
         "description": "",
@@ -252,26 +252,6 @@
           },
           "500": {
             "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/people/{id}/blacklist": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }

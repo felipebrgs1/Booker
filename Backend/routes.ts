@@ -9,7 +9,13 @@ router.get("/cards", async (req: Request, res: Response) => {
 	res.json(cards);
 });
 
-router.get("/cards/get/:id", async (req: Request, res: Response) => {
+router.get("/cards/:id", async (req: Request, res: Response) => {
+	const { id } = req.params;
+	const card = await prisma.card.findUnique({ where: { id: Number(id) } });
+	res.json(card);
+});
+
+router.get("/people/get/:id", async (req: Request, res: Response) => {
 	const { id } = req.params;
 
 	try {
@@ -42,16 +48,13 @@ router.get("/cards/get/:id", async (req: Request, res: Response) => {
 	}
 });
 
-router.get("/cards/:id", async (req: Request, res: Response) => {
+router.get("/people/:id/blacklist", async (req: Request, res: Response) => {
 	const { id } = req.params;
-	const card = await prisma.card.findUnique({ where: { id: Number(id) } });
-	res.json(card);
-});
-
-router.post("/people", async (req: Request, res: Response) => {
-	const { name, email } = req.body;
-	const person = await prisma.person.create({ data: { name, email } });
-	res.json(person);
+	const blacklist = await prisma.blacklist.findMany({
+		where: { personId: Number(id) },
+		include: { card: true },
+	});
+	res.json(blacklist);
 });
 
 router.get("/people", async (req: Request, res: Response) => {
@@ -59,9 +62,18 @@ router.get("/people", async (req: Request, res: Response) => {
 	res.json(people);
 });
 
-router.get("/people/:id", async (req: Request, res: Response) => {
+router.get("/people/:id/favorites", async (req: Request, res: Response) => {
 	const { id } = req.params;
-	const person = await prisma.person.findUnique({ where: { id: Number(id) } });
+	const favorites = await prisma.favorite.findMany({
+		where: { personId: Number(id) },
+		include: { card: true },
+	});
+	res.json(favorites);
+});
+
+router.post("/people", async (req: Request, res: Response) => {
+	const { name, email } = req.body;
+	const person = await prisma.person.create({ data: { name, email } });
 	res.json(person);
 });
 
@@ -81,15 +93,6 @@ router.post(
 	},
 );
 
-router.get("/people/:id/favorites", async (req: Request, res: Response) => {
-	const { id } = req.params;
-	const favorites = await prisma.favorite.findMany({
-		where: { personId: Number(id) },
-		include: { card: true },
-	});
-	res.json(favorites);
-});
-
 router.post(
 	"/people/:id/blacklist/:cardId",
 	async (req: Request, res: Response) => {
@@ -102,13 +105,13 @@ router.post(
 	},
 );
 
-router.get("/people/:id/blacklist", async (req: Request, res: Response) => {
+router.post("/people/:id/friends", async (req: Request, res: Response) => {
 	const { id } = req.params;
-	const blacklist = await prisma.blacklist.findMany({
-		where: { personId: Number(id) },
-		include: { card: true },
+	const { friendId } = req.body;
+	const friend = await prisma.friend.create({
+		data: { friendId: Number(friendId), personId: Number(id) },
 	});
-	res.json(blacklist);
+	res.json(friend);
 });
 
 router.delete(
@@ -151,14 +154,5 @@ router.delete(
 		res.json(favorite);
 	},
 );
-
-router.post("/people/:id/friends", async (req: Request, res: Response) => {
-	const { id } = req.params;
-	const { friendId } = req.body;
-	const friend = await prisma.friend.create({
-		data: { friendId: Number(friendId), personId: Number(id) },
-	});
-	res.json(friend);
-});
 
 export default router;

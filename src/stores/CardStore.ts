@@ -5,7 +5,7 @@ import type { Card } from "@prisma/client";
 
 export const useCardStore = defineStore("cardData", {
 	state: () => ({
-		cards: ref<Card[]>([]),
+		cards: [] as Card[],
 		currentCardIndex: ref(0),
 	}),
 
@@ -15,12 +15,8 @@ export const useCardStore = defineStore("cardData", {
 
 	actions: {
 		async getCards() {
-			try {
-				const response = await axios.get("http://localhost:3000/cards/get/1");
-				this.cards = response.data;
-			} catch (error) {
-				console.error("Erro ao buscar cards:", error);
-			}
+			const response = await axios.get("http://localhost:3000/people/get/1");
+			this.cards = response.data;
 		},
 		async getFavorite() {
 			const response = await axios.get(
@@ -52,11 +48,11 @@ export const useCardStore = defineStore("cardData", {
 		},
 		async deleteFavorite(cardId: number, personId: number) {
 			try {
-				const response = await axios.delete(
+				await axios.delete(
 					`http://localhost:3000/people/${personId}/favorites/${cardId}`,
 				);
 
-				this.cards = response.data;
+				await this.getFavorite();
 			} catch (error) {
 				console.error("Erro ao buscar cards:", error);
 			}
@@ -76,10 +72,11 @@ export const useCardStore = defineStore("cardData", {
 		},
 		async deleteBlacklist(cardId: number, personId: number) {
 			try {
-				const response = await axios.delete(
+				await axios.delete(
 					`http://localhost:3000/people/${personId}/blacklist/${cardId}`,
 				);
-				this.cards = response.data;
+
+				await this.getBlacklist();
 			} catch (error) {
 				console.error("Erro ao buscar cards:", error);
 			}
