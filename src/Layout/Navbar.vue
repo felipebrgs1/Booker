@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-white bg-white rounded-bottom ">
+    <nav class="navbar navbar-expand-lg navbar-white bg-white rounded-bottom shadow-lg sticky-top ">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
                 <i class="bi bi-book-fill m-1"></i>
@@ -17,6 +17,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-primary text-dark mx-1 fw-bold" href="/Favorite">Favoritos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-dark mx-1 fw-bold" href="/friends">Amigos</a>
+                    </li>
+                    <li>
+                        <a class="nav-link btn btn-primary text-dark mx-1 fw-bold" href="/blacklist">Rejeitados</a>
                     </li>
                 </ul>
             </div>

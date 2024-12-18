@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Person {
+  id    Int    @id @default(autoincrement())
+  name  String
+  email String @unique
+
+  favorites  Favorite[]
+  blacklists Blacklist[]
+
+  Friend Friend[] @relation("FriendToPerson")
+}
+
+model Friend {
+  id       Int    @id @default(autoincrement())
+  person   Person @relation("FriendToPerson", fields: [personId], references: [id])
+  personId Int
+  friendId Int    @unique
+}
+
+model Card {
+  id          Int         @id @default(autoincrement())
+  title       String
+  genre       String
+  image       String
+  description String
+  author      String
+  favorite    Favorite[]
+  blacklist   Blacklist[]
+}
+
+model Favorite {
+  id       Int    @id @default(autoincrement())
+  person   Person @relation(fields: [personId], references: [id])
+  personId Int
+  card     Card   @relation(fields: [cardId], references: [id])
+  cardId   Int
+
+  @@unique([personId, cardId])
+}
+
+model Blacklist {
+  id       Int    @id @default(autoincrement())
+  person   Person @relation(fields: [personId], references: [id])
+  personId Int
+  card     Card   @relation(fields: [cardId], references: [id])
+  cardId   Int
+
+  @@unique([personId, cardId])
+}

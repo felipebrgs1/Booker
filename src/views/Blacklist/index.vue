@@ -1,14 +1,12 @@
 <template>
     <div class="container mt-5 rounded shadow bg-white">
         <div>
-            <ul class=" m-3">
-                <li v-for="card in CardData.cards" :key="card.id" class=" m-2">
-                    <Card :item="card">
+            <ul class="m-3">
+                <li v-for="cardWrapper in CardData.cards" :key="cardWrapper.id" class="m-2">
+                    <Card :item="cardWrapper.card">
                         <template v-slot:buttons="">
                             <button class="btn btn-danger mx-2"
-                                @click="CardData.postBlacklist(card.id)">Rejeitar</button>
-                            <button class="btn btn-primary" @click="CardData.postFavorite(card.id)">Favoritar</button>
-
+                                @click="CardData.deleteBlacklist(cardWrapper.card.id, 1)">Rejeitar</button>
                         </template>
                     </Card>
                 </li>
@@ -24,10 +22,9 @@ import Card from '../../components/Card.vue';
 
 const CardData = useCardStore();
 onMounted(() => {
-    CardData.getCards().then(() => {
+    CardData.getBlacklist().then(() => {
 
         console.log("Cards:", CardData.cards);
-
     })
 });
 </script>

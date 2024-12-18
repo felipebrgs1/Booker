@@ -1,0 +1,83 @@
+[
+    {
+      "id": 1,
+      "title": "A Song of Ice and Fire",
+      "genre": "Fantasy",
+      "image": "https://example.com/images/asoiaf.jpg",
+      "description": "An epic tale of politics, war, and dragons in the land of Westeros.",
+      "author": "George R. R. Martin"
+    },
+    {
+      "id": 2,
+      "title": "The Lord of the Rings",
+      "genre": "Fantasy",
+      "image": "https://example.com/images/lotr.jpg",
+      "description": "A journey through Middle-earth to destroy the One Ring.",
+      "author": "J.R.R. Tolkien"
+    },
+    {
+      "id": 3,
+      "title": "1984",
+      "genre": "Dystopian",
+      "image": "https://example.com/images/1984.jpg",
+      "description": "A chilling depiction of a totalitarian regime and its impact on society.",
+      "author": "George Orwell"
+    },
+    {
+      "id": 4,
+      "title": "To Kill a Mockingbird",
+      "genre": "Fiction",
+      "image": "https://example.com/images/tokillamockingbird.jpg",
+      "description": "A powerful story about justice and racial inequality in the American South.",
+      "author": "Harper Lee"
+    },
+    {
+      "id": 5,
+      "title": "The Great Gatsby",
+      "genre": "Fiction",
+      "image": "https://example.com/images/gatsby.jpg",
+      "description": "A tale of love, wealth, and tragedy in the Jazz Age.",
+      "author": "F. Scott Fitzgerald"
+    },
+    {
+      "id": 6,
+      "title": "The Catcher in the Rye",
+      "genre": "Fiction",
+      "image": "https://example.com/images/catcher.jpg",
+      "description": "The journey of a disillusioned teenager through New York City.",
+      "author": "J.D. Salinger"
+    },
+    {
+      "id": 7,
+      "title": "Brave New World",
+      "genre": "Dystopian",
+      "image": "https://example.com/images/bravenewworld.jpg",
+      "description": "A futuristic world where individuality is suppressed in favor of stability.",
+      "author": "Aldous Huxley"
+    },
+    {
+      "id": 8,
+      "title": "Moby-Dick",
+      "genre": "Adventure",
+      "image": "https://example.com/images/mobydick.jpg",
+      "description": "The tale of a captain's obsession with hunting a white whale.",
+      "author": "Herman Melville"
+    },
+    {
+      "id": 9,
+      "title": "The Hobbit",
+      "genre": "Fantasy",
+      "image": "https://example.com/images/hobbit.jpg",
+      "description": "A prelude to The Lord of the Rings, following Bilbo's journey to the Lonely Mountain.",
+      "author": "J.R.R. Tolkien"
+    },
+    {
+      "id": 10,
+      "title": "Pride and Prejudice",
+      "genre": "Romance",
+      "image": "https://example.com/images/prideandprejudice.jpg",
+      "description": "A classic tale of love and societal expectations in Regency-era England.",
+      "author": "Jane Austen"
+    }
+  ]
+  

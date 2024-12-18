@@ -1,26 +1,35 @@
 <template>
-    <div>
-        <ul>
-            <li v-for="card in CardData.cards" :key="card.id">
-                <Card :item="card">
-                    <template v-slot:buttons="{ item }">
-                        <button class="btn btn-danger" @click="CardData.addCardToBlacklist(card)">Rejeitar</button>
-                    </template>
-                </Card>
-            </li>
-        </ul>
-
+    <div class="container mt-5 rounded shadow bg-white">
+        <div>
+            <ul class="m-3">
+                <li v-for="cardWrapper in CardData.cards" :key="cardWrapper.id" class="list-group-item m-2">
+                    <Card :item="cardWrapper.card">
+                        <template v-slot:buttons="">
+                            <button class="btn btn-danger mx-2"
+                                @click="CardData.deleteFavorite(cardWrapper.card.id, 1)">Rejeitar</button>
+                        </template>
+                    </Card>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted } from 'vue';
-import { useCardDataStore } from '../../stores/CardData';
+import { useCardStore } from '../../stores/CardStore';
 import Card from '../../components/Card.vue';
 
-const CardData = useCardDataStore();
-
+const CardData = useCardStore();
 onMounted(() => {
-    CardData.generateCards(10);
+    CardData.getFavorite().then(() => {
+
+        console.log("Cards:", CardData.cards);
+    })
 });
 </script>
+<style>
+li {
+    list-style: none;
+}
+</style>

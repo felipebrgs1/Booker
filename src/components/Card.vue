@@ -1,22 +1,23 @@
 <template>
-    <div class="mt-5 d-flex justify-content-center">
-        <ul class="list-group w-75">
-            <li v-if="item" :key="item.id" class="list-group-item text-center">
+    <div class="container mt-5 d-flex justify-content-center">
+        <ul class="w-75 rounded mb-3 shadow">
+            <li v-if="!item || Object.keys(item).length === 0" class="text-center">
+                <p class="text-danger">Carregando...</p>
+            </li>
+            <li v-else class="text-center p-3 my-1">
                 <div>
                     <h5>{{ item.title }}</h5>
                     <div class="mt-3">
-                        <img :src="item.image" class="img-fluid rounded" alt="..." />
+                        <img src="https://m.media-amazon.com/images/I/616e4-9bv0S._SY522_.jpg" class="img-fluid rounded"
+                            alt="Card Image" />
                     </div>
                 </div>
                 <div class="mt-3">
                     <p><b>Gênero:</b> {{ item.genre }}</p>
                     <p><b>Autor:</b> {{ item.author }}</p>
                 </div>
-                <div>
-                    <p><b>Amigos:</b> {{ item.friends.join(', ') }}</p>
-                </div>
                 <div v-if="!hasCustomButtons">
-                    <slot name="buttons" :item="item" />
+                    <slot name="buttons" />
                 </div>
             </li>
         </ul>
@@ -26,14 +27,22 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
-const props = defineProps({
-    item: Object,
-
+defineProps({
+    item: {
+        type: Object,
+        required: true,
+    },
 });
 
 const hasCustomButtons = ref(false);
 
 onMounted(() => {
     hasCustomButtons.value = !!document.querySelector('[data-v-slot="buttons"]');
+
 });
 </script>
+<style>
+li {
+    list-style: none;
+}
+</style>

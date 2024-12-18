@@ -11,6 +11,16 @@ const routes = [
 		name: "favorite",
 		component: () => import("../views/Favorites/index.vue"), // Crie um componente About.vue em "views"
 	},
+	{
+		path: "/friends",
+		name: "friends",
+		component: () => import("../views/Friends/index.vue"), // Crie um componente About.vue em "views"
+	},
+	{
+		path: "/blacklist",
+		name: "blacklist",
+		component: () => import("../views/Blacklist/index.vue"), // Crie um componente About.vue em "views"
+	},
 ];
 
 const router = createRouter({
