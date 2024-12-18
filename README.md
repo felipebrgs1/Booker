@@ -1,4 +1,6 @@
-1- npm i    
+0- cd src -> bun i -> bun run dev
+
+1- cd .. -> cd Backend -> bun index.ts
 
 
 2- npm run dev    
