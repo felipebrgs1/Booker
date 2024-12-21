@@ -44,3 +44,8 @@ li {
     list-style: none;
 }
 </style>
+<script lang="ts">
+export default {
+    name: 'Card'
+}
+</script>

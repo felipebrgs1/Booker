@@ -24,6 +24,14 @@
                     <li>
                         <a class="nav-link btn btn-primary text-dark mx-1 fw-bold" href="/blacklist">Rejeitados</a>
                     </li>
+                    <li>
+                        <a class="nav-link btn btn-primary text-dark mx-1 fw-bold bg-amber" href="/manage"> <i
+                                class="bi bi-person-fill-gear"></i> Manage</a>
+                    </li>
+                    <li>
+                        <a class="nav-link btn btn-primary text-dark mx-1 fw-bold bg-amber" href="/cadastro"> <i
+                                class="bi bi-box-arrow-in-right"></i> cadastro</a>
+                    </li>
                 </ul>
             </div>
         </div>

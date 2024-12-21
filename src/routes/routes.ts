@@ -21,6 +21,16 @@ const routes = [
 		name: "blacklist",
 		component: () => import("../views/Blacklist/index.vue"), // Crie um componente About.vue em "views"
 	},
+	{
+		path: "/manage",
+		name: "manage",
+		component: () => import("../views/CardManager/index.vue"),
+	},
+	{
+		path: "/cadastro",
+		name: "cadastro",
+		component: () => import("../views/Cadastro/index.vue"),
+	}
 ];
 
 const router = createRouter({

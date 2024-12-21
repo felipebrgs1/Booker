@@ -7,6 +7,7 @@ export const useCardStore = defineStore("cardData", {
 	state: () => ({
 		cards: [] as Card[],
 		currentCardIndex: ref(0),
+		obj: {} as Card,
 	}),
 
 	getters: {
@@ -21,7 +22,7 @@ export const useCardStore = defineStore("cardData", {
 		async getFavorite() {
 			const response = await axios.get(
 				"http://localhost:3000/people/1/favorites",
-			);
+			);	
 			this.cards = response.data;
 		},
 		async getBlacklist() {
@@ -49,7 +50,6 @@ export const useCardStore = defineStore("cardData", {
 					`http://localhost:3000/people/${personId}/favorites/${cardId}`,
 				);
 
-				await this.getFavorite();
 			} catch (error) {
 				console.error("Erro ao buscar cards:", error);
 			}
@@ -72,11 +72,27 @@ export const useCardStore = defineStore("cardData", {
 				await axios.delete(
 					`http://localhost:3000/people/${personId}/blacklist/${cardId}`,
 				);
-
-				await this.getBlacklist();
 			} catch (error) {
 				console.error("Erro ao buscar cards:", error);
 			}
 		},
-	},
+		async addCard(card: Card) {
+			try {
+				await axios.post("http://localhost:3000/cards", card);
+				window.alert("Card adicionado com sucesso!");
+			} catch (error) {
+				console.error("Erro ao buscar cards:", error);
+			}
+		},
+		async deleteCard(cardId: number) {
+			try {
+				await axios.delete(`http://localhost:3000/cards/${cardId}`);
+				window.alert(cardId+"Card deletado com sucesso!");
+			} catch (error) {
+				console.error("Erro ao buscar cards:", error);
+			}
+		}
+	}
+	
+	
 });

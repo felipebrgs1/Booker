@@ -11,7 +11,9 @@
                     </button>
                 </template>
             </Card>
-            <div v-else class="mt-3">Carregando mais cards...</div>
+            <div v-else>
+                <p class="text-center h1">Sem Cards</p>
+            </div>
         </div>
     </div>
 </template>
@@ -19,8 +21,8 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useCardStore } from '../../stores/CardStore';
-import Card from '../../components/Card.vue';
+import { useCardStore } from "../../stores/CardStore";
+import Card from '@/components/Card.vue';
 
 const CardData = useCardStore();
 const { cards } = storeToRefs(CardData);

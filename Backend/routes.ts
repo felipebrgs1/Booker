@@ -58,8 +58,31 @@ router.get("/people/:id/blacklist", async (req: Request, res: Response) => {
 });
 
 router.get("/people", async (req: Request, res: Response) => {
-	const people = await prisma.person.findMany();
-	res.json(people);
+  const people = await prisma.person.findMany({
+    include: {
+      friends: { 
+        include: {
+          friend: true 
+        }
+      },
+      friendsOf: { 
+        include: {
+          person: true 
+        }
+      }
+    }
+  });
+  res.json(
+    people.map(person => ({
+      id: person.id,
+      name: person.name,
+      email: person.email,
+      friends: [
+        ...person.friends.map(friendRelation => friendRelation.friend),
+        ...person.friendsOf.map(friendRelation => friendRelation.person)
+      ]
+    }))
+  );
 });
 
 router.get("/people/:id/favorites", async (req: Request, res: Response) => {
@@ -105,11 +128,10 @@ router.post(
 	},
 );
 
-router.post("/people/:id/friends", async (req: Request, res: Response) => {
-	const { id } = req.params;
-	const { friendId } = req.body;
+router.post("/people/:id/friends/:id2", async (req: Request, res: Response) => {
+	const { id,id2 } = req.params;
 	const friend = await prisma.friend.create({
-		data: { friendId: Number(friendId), personId: Number(id) },
+		data: { friendId: Number(id), personId: Number(id2) },include: { person: true },
 	});
 	res.json(friend);
 });
@@ -154,5 +176,40 @@ router.delete(
 		res.json(favorite);
 	},
 );
+
+router.post("/cards", async (req: Request, res: Response) => {
+	const data = req.body;
+	const card = await prisma.card.create({ data: data });
+	res.json(card);
+},
+);
+router.delete("/cards/:id", async (req: Request, res: Response) => {
+	const { id } = req.params;
+	const response = await prisma.card.delete({ where: { id: Number(id) } });
+	res.json(response);
+});
+router.get("/people/:id", async (req: Request, res: Response) => {
+	const { id } = req.params;
+
+	try {
+		const person = await prisma.friend.findMany({
+			where: {
+				OR: [
+					{ personId: Number(id) },
+					{ friendId: Number(id) }
+				]
+			},
+			include: {
+				person: true, 
+				friend: true  
+			}
+		});
+
+			res.json(person);
+	} catch (error) {
+			console.error("Erro ao buscar amigos:", error);
+			res.status(500).json({ error: "Erro ao buscar amigos" });
+	}
+});
 
 export default router;

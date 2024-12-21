@@ -15,32 +15,35 @@ model Person {
   favorites  Favorite[]
   blacklists Blacklist[]
 
-  Friend Friend[] @relation("FriendToPerson")
+  friends   Friend[] @relation("PersonToFriends")
+  friendsOf Friend[] @relation("FriendsToPerson")
 }
 
 model Friend {
   id       Int    @id @default(autoincrement())
-  person   Person @relation("FriendToPerson", fields: [personId], references: [id])
+  person   Person @relation("PersonToFriends", fields: [personId], references: [id])
   personId Int
-  friendId Int    @unique
+  friend   Person @relation("FriendsToPerson", fields: [friendId], references: [id])
+  friendId Int
 }
 
 model Card {
-  id          Int         @id @default(autoincrement())
+  id          Int    @id @default(autoincrement())
   title       String
   genre       String
   image       String
   description String
   author      String
-  favorite    Favorite[]
-  blacklist   Blacklist[]
+
+  favorite  Favorite[]
+  blacklist Blacklist[]
 }
 
 model Favorite {
   id       Int    @id @default(autoincrement())
   person   Person @relation(fields: [personId], references: [id])
   personId Int
-  card     Card   @relation(fields: [cardId], references: [id])
+  card     Card   @relation(fields: [cardId], references: [id], onDelete: Cascade)
   cardId   Int
 
   @@unique([personId, cardId])
@@ -50,7 +53,7 @@ model Blacklist {
   id       Int    @id @default(autoincrement())
   person   Person @relation(fields: [personId], references: [id])
   personId Int
-  card     Card   @relation(fields: [cardId], references: [id])
+  card     Card   @relation(fields: [cardId], references: [id], onDelete: Cascade)
   cardId   Int
 
   @@unique([personId, cardId])

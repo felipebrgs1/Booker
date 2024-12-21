@@ -1,6 +1,6 @@
 <template>
-    <div class="container mt-5 rounded shadow bg-white">
-        <div>
+    <div class="container mt-5 rounded shadow bg-white ">
+        <div v-if="cards && cards.length">
             <ul class="m-3">
                 <li v-for="card in cards" :key="card.id" class="list-group-item m-2">
                     <Card :item="card">
@@ -12,6 +12,9 @@
                     </Card>
                 </li>
             </ul>
+        </div>
+        <div v-else class="mt-3">
+            <p class="text-center h1">Sem cards</p>
         </div>
     </div>
 </template>

@@ -19,10 +19,36 @@
             "description": "OK"
           }
         }
+      },
+      "post": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/cards/{id}": {
       "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
         "description": "",
         "parameters": [
           {
@@ -256,8 +282,36 @@
         }
       }
     },
-    "/people/{id}/friends": {
+    "/people/{id}/friends/{id2}": {
       "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id2",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/people/{id}": {
+      "get": {
         "description": "",
         "parameters": [
           {
@@ -272,20 +326,9 @@
         "responses": {
           "200": {
             "description": "OK"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "friendId": {
-                    "example": "any"
-                  }
-                }
-              }
-            }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }

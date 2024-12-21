@@ -1,6 +1,6 @@
 <template>
     <div class="container mt-5 rounded shadow bg-white">
-        <div>
+        <div v-if="cards && cards.length">
             <ul class="m-3">
                 <li v-for="card in cards" :key="card.id" class="list-group-item m-2">
                     <Card :item="card">
@@ -13,6 +13,9 @@
                 </li>
             </ul>
         </div>
+        <div v-else>
+            <p class="text-center h1">Sem cards</p>
+        </div>
     </div>
 </template>
 
@@ -20,7 +23,7 @@
 import { storeToRefs } from 'pinia';
 import { onMounted } from 'vue';
 import { useCardStore } from '../../stores/CardStore';
-import Card from '../../components/Card.vue';
+import Card from '@/components/Card.vue';
 
 const CardData = useCardStore();
 const { cards } = storeToRefs(CardData);
