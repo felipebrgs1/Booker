@@ -5,7 +5,7 @@
                 <li v-for="card in cards" :key="card.id" class="list-group-item m-2">
                     <Card :item="card">
                         <template v-slot:buttons>
-                            <button class="btn btn-danger mx-2" @click="CardData.deleteFavorite(card.cardId, 1)">
+                            <button class="btn btn-danger mx-2" @click="CardData.deleteFavorite(1, card.cardId)">
                                 Rejeitar
                             </button>
                         </template>
@@ -23,14 +23,13 @@
 import { storeToRefs } from 'pinia';
 import { onMounted } from 'vue';
 import { useCardStore } from '../../stores/CardStore';
-import Card from '@/components/Card.vue';
+import Card from '../../components/Card.vue';
 
 const CardData = useCardStore();
-const { cards } = storeToRefs(CardData);
 
+const { cards } = storeToRefs(CardData);
+console.log("Cards:", cards);
 onMounted(() => {
     CardData.getFavorite();
-
-    console.log("Cards:", useCardStore().cards);
 });
 </script>

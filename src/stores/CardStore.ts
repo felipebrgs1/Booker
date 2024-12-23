@@ -33,23 +33,21 @@ export const useCardStore = defineStore("cardData", {
 		},
 		async postFavorite(_cardId: number, personId = 1) {
 			try {
-				const response = await axios.post(
+				await axios.post(
 					`http://localhost:3000/people/${personId}/favorites/${_cardId}`,
-				);
-
-				this.cards = this.cards.filter((card) => card.id !== _cardId);
-
-				console.log("Resposta do servidor:", response.data);
+				)
 			} catch (error) {
 				console.error("Erro ao adicionar aos favoritos:", error);
 			}
 		},
-		async deleteFavorite(cardId: number, personId: number) {
+		async deleteFavorite(personId: number, cardId: number) {
 			try {
+				console.log("personId", personId, "cardId", cardId);
 				await axios.delete(
 					`http://localhost:3000/people/${personId}/favorites/${cardId}`,
 				);
-
+				this.cards = this.cards.filter((card) => card.id !== cardId); 
+				this.getFavorite();
 			} catch (error) {
 				console.error("Erro ao buscar cards:", error);
 			}
@@ -72,6 +70,8 @@ export const useCardStore = defineStore("cardData", {
 				await axios.delete(
 					`http://localhost:3000/people/${personId}/blacklist/${cardId}`,
 				);
+				this.cards = this.cards.filter((card) => card.id !== cardId);
+				this.getBlacklist();
 			} catch (error) {
 				console.error("Erro ao buscar cards:", error);
 			}
@@ -79,7 +79,7 @@ export const useCardStore = defineStore("cardData", {
 		async addCard(card: Card) {
 			try {
 				await axios.post("http://localhost:3000/cards", card);
-				window.alert("Card adicionado com sucesso!");
+				this.cards.push(card);
 			} catch (error) {
 				console.error("Erro ao buscar cards:", error);
 			}
@@ -87,7 +87,7 @@ export const useCardStore = defineStore("cardData", {
 		async deleteCard(cardId: number) {
 			try {
 				await axios.delete(`http://localhost:3000/cards/${cardId}`);
-				window.alert(cardId+"Card deletado com sucesso!");
+				this.cards = this.cards.filter((card) => card.id !== cardId);
 			} catch (error) {
 				console.error("Erro ao buscar cards:", error);
 			}

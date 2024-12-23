@@ -20,15 +20,22 @@
     </v-row>
     <v-row class="text-center my-8 bg-white">
       <v-col cols="6" class="py-4">
-        <input type="number" v-model="amigo.amigo1" placeholder="Pessoa 1" class="bg-grey-lighten-1 text-center" />
+        <label for="num" class="mr-3">
+          <p>Adicionar Amigo</p>
+        </label>
+        <input type="number" v-model="amigo.amigo1" placeholder="Pessoa 1" class="bg-grey-lighten-1 text-center m-1" />
 
         <input type="number" v-model="amigo.amigo2" placeholder="Pessoa 2" class="bg-grey-lighten-1 text-center" />
         <button class="btn btn-primary my-4" @click="PersonData.addFriend(amigo.amigo1, amigo.amigo2)">
           Adicionar Amigo
         </button>
       </v-col>
+
       <v-col cols="6" class="py-4">
-        <input type="number" v-model="amigo.amigo1" placeholder="Pessoa 1" class="bg-grey-lighten-1 text-center" />
+        <label for="num" class="mr-3">
+          <p>Deletar Amigo</p>
+        </label>
+        <input type="number" v-model="amigo.amigo1" placeholder="Pessoa 1" class="bg-grey-lighten-1 text-center m-1" />
 
         <input type="number" v-model="amigo.amigo2" placeholder="Pessoa 2" class="bg-grey-lighten-1 text-center" />
         <button class="btn btn-danger my-4" @click="PersonData.deleteFriend(amigo.amigo1, amigo.amigo2)">

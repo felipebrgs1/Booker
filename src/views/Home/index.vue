@@ -22,7 +22,7 @@
 import { computed, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useCardStore } from "../../stores/CardStore";
-import Card from '@/components/Card.vue';
+import Card from '../../components/Card.vue';
 
 const CardData = useCardStore();
 const { cards } = storeToRefs(CardData);

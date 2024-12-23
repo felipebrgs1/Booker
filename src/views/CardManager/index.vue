@@ -12,7 +12,7 @@
                     <input type="text" v-model="obj.author" placeholder="Autor" class="form-control my-2" />
                     <input type="text" v-model="obj.image" placeholder="Imagem" class="form-control my-2" />
                     <textarea v-model="obj.description" placeholder="Descrição" class="form-control my-2"></textarea>
-                    <button class="btn btn-primary" @click="CardData.addCard(obj)">
+                    <button class="btn btn-primary" @click="handleraddCard(obj)">
                         Adicionar Card
                     </button>
 
@@ -30,7 +30,7 @@
             </label>
             <input type="number" v-model="num" placeholder="Id para remoçao" class="bg-white" />
 
-            <button class="btn btn-danger" @click="CardData.deleteCard(num)">
+            <button class="btn btn-danger" @click="handlerdeleteCard(num)">
                 Remover Card
             </button>
         </div>
@@ -41,6 +41,15 @@
 import { onMounted, ref } from 'vue';
 import { useCardStore } from '../../stores/CardStore';
 import Card from '../../components/Card.vue';
+
+const handleraddCard = (obj: { id: number; title: string; genre: string; image: string; description: string; author: string; }) => {
+    CardData.addCard(obj);
+    alert("Card adicionado com sucesso!");
+};
+const handlerdeleteCard = (num: number) => {
+    CardData.deleteCard(num);
+    alert("Card deletado com sucesso!");
+};
 
 const CardData = useCardStore();
 let obj = CardData.obj;
